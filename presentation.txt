@@ -1,0 +1,8 @@
+Pk django : 
+	- Gestion de package
+	- Transfert facilité en PWA
+	- Gestion BDD (import export des datas / migration structure)
+	- Apprendre new techno (ras l'cul angular)
+	- Séparation en application
+
+Fin de prés : Comparatif angular/django
