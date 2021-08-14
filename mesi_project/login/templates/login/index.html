@@ -20,21 +20,26 @@
 							<h1>Login</h1>
 						 </div>
 					</div>
-                   <form action="/board/" method="post" name="login">
+                   <form action="" method="post" name="login">
                        {% csrf_token %}
                            <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                              <label for="exampleInputEmail1">Username</label>
+                              <input type="text" name="username"  class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
                            </div>
                            <div class="form-group">
                               <label for="exampleInputEmail1">Password</label>
                               <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
                            </div>
+                           {% if messages %}
+                                {% for message in messages %}
+                                    <p class="text-danger">{{ message }}</p>
+                                {% endfor %}
+                            {% endif %}
                            <div class="col-md-12 text-center ">
                               <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
                            </div>
                            <div class="form-group">
-                              <p class="text-center">Don't have account? <a href="/authentication/signup/" id="signup">Sign up here</a></p>
+                              <p class="text-center">Don't have account? <a href="/login/signup/" id="signup">Sign up here</a></p>
                            </div>
                         </form>
 

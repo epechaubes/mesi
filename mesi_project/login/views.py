@@ -1,6 +1,9 @@
-from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib import messages
+from django.urls import reverse
+
 from .forms import SignUpForm
 import logging
 
@@ -40,7 +43,7 @@ def index(request):
 
 
 
-def signupSubmit(request):
+def signup(request):
     if not request.method == 'POST':
         form = SignUpForm()
         context = {'form': form}
