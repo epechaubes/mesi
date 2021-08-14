@@ -23,7 +23,7 @@ def signupSubmit(request):
     form = SignUpForm(request.POST)
 
     if not form.is_valid():
-        return render(request, template)
+        return render(request, template, {'form': form})
 
     form.save()
     return redirect('index')
