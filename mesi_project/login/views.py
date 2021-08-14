@@ -6,24 +6,50 @@ import logging
 
 
 logger = logging.getLogger(__name__)
-template = 'login/signup.html'
+signUpTemplate = 'login/signup.html'
+loginTemplate = 'login/index.html'
+boardTemplate = 'board/index.html'
+
+def logout(request):
+    logout(request)
+    messages.add_message(request, messages.SUCCESS, "Vous êtes déconnecté !")
+    return redirect("index")
 
 def index(request):
-    return HttpResponse("Index page")
+    if not request.method == 'POST':
+        return render(request, loginTemplate)
 
-def signup(request):
-    return render(request, template)
+    username = request.POST.get('username', False)
+    password = request.POST.get('password', False)
+
+    user = authenticate(request, username=username, password=password)
+    logger.error(user)
+
+    if user is not None:
+        login(request, user)
+        testUser = request.user.is_authenticated
+        # return render(request, boardTemplate)
+        # redirect("boardi")
+        return HttpResponseRedirect(reverse("board:index"))
+    else:
+        messages.add_message(
+            request, messages.ERROR, "Les champs renseignés sont invalides."
+        )
+        logger.error(messages)
+        return redirect("index")
+
+
 
 def signupSubmit(request):
     if not request.method == 'POST':
         form = SignUpForm()
         context = {'form': form}
-        return render(request, template, context)
+        return render(request, signUpTemplate, context)
 
     form = SignUpForm(request.POST)
 
     if not form.is_valid():
-        return render(request, template, {'form': form})
+        return render(request, signUpTemplate, {'form': form})
 
     form.save()
     return redirect('index')
