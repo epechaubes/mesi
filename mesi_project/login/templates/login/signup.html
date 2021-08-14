@@ -16,7 +16,8 @@
                               <h1 >Signup</h1>
                            </div>
                         </div>
-                        <form action="/authentication/login/" name="registration">
+                        <form action="/login/signupSubmit/" name="registration" method="post">
+                            {% csrf_token %}
 <!--                           <div class="form-group">-->
 <!--                              <label for="exampleInputEmail1">First Name</label>-->
 <!--                              <input type="text"  name="firstname" class="form-control" id="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname">-->
@@ -29,18 +30,18 @@
                               <label for="exampleInputEmail1">Username</label>
                               <input type="text"  name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
                            </div>
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Email address</label>
-                              <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-                           </div>
+<!--                           <div class="form-group">-->
+<!--                              <label for="exampleInputEmail1">Email address</label>-->
+<!--                              <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">-->
+<!--                           </div>-->
                            <div class="form-group">
                               <label for="exampleInputEmail1">Password</label>
                               <input type="password" name="password1" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
                            </div>
-<!--                            <div class="form-group">-->
-<!--                              <label for="exampleInputEmail1">Confirm Password</label>-->
-<!--                              <input type="password" name="confirmPassword" id="confirmPassword"  class="form-control" aria-describedby="emailHelp" placeholder="Re-enter Password">-->
-<!--                           </div>-->
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Confirm Password</label>
+                              <input type="password" name="password2" id="confirmPassword"  class="form-control" aria-describedby="emailHelp" placeholder="Re-enter Password">
+                           </div>
                            <div class="col-md-12 text-center mb-3">
                               <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Sign up</button>
                            </div>
