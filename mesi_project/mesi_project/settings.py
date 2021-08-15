@@ -45,7 +45,10 @@ AUTH_USER_MODEL = 'login.User'
 
 LOGOUT_REDIRECT_URL = "login:index"
 
-AUTHENTICATION_BACKENDS = ['login.authenticate.EmailAuth']
+AUTHENTICATION_BACKENDS = [
+    'login.authenticate.EmailAuth',
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

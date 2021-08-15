@@ -1,8 +1,22 @@
-<p> "la mere de : " + {{request.user.username}} + "c'est une pute"
+{% extends 'board/base.html' %}
 
-   <div>{{request.user.is_authenticated}}</div>
+{% block content %}
+
+    <p> "la mere de : " + {{request.user.username}} + "c'est une pute"
+    <div>{{request.user.is_authenticated}}</div>
+
+    <a href="{% url 'logout' %}">
+        <button>Logout</button>
+    </a>
+
+{% endblock %}
 
 
-<a href="{% url 'logout' %}">
-   <button>Logout</button>
-</a>
+
+
+
+
+
+
+
+
