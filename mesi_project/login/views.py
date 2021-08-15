@@ -13,38 +13,15 @@ signUpTemplate = 'login/signup.html'
 loginTemplate = 'login/index.html'
 boardTemplate = 'board/index.html'
 
-# def index(request):
-#     if not request.method == 'POST':
-#         return render(request, loginTemplate)
-#
-#     username = request.POST.get('username', False)
-#     password = request.POST.get('password', False)
-#
-#     user = authenticate(request, username=username, password=password)
-#     logger.error(user)
-#
-#     if user is not None:
-#         login(request, user)
-#         return HttpResponseRedirect(reverse("board:index"))
-#     else:
-#         messages.add_message(
-#             request, messages.ERROR, "Les champs renseignés sont invalides."
-#         )
-#         logger.error(messages)
-#         return redirect("index")
-
 
 def index(request):
     if not request.method == 'POST':
         return render(request, loginTemplate)
 
     email = request.POST.get('email', False)
-    logger.error(email)
     password = request.POST.get('password', False)
-    logger.error(password)
 
     user = authenticate(request, email=email, password=password)
-    logger.error(user)
 
     if user is not None:
         login(request, user)
@@ -53,8 +30,8 @@ def index(request):
         messages.add_message(
             request, messages.ERROR, "Les champs renseignés sont invalides."
         )
-        logger.error(messages)
         return redirect("login:index")
+
 
 def signup(request):
     if not request.method == 'POST':
