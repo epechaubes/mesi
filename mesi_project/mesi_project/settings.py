@@ -43,6 +43,10 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'login.User'
 
+LOGOUT_REDIRECT_URL = "login:index"
+
+AUTHENTICATION_BACKENDS = ['login.authenticate.EmailAuth']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

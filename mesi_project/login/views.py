@@ -38,8 +38,10 @@ def index(request):
     if not request.method == 'POST':
         return render(request, loginTemplate)
 
-    username = request.POST.get('username', False)
+    email = request.POST.get('email', False)
+    logger.error(email)
     password = request.POST.get('password', False)
+    logger.error(password)
 
     user = authenticate(request, email=email, password=password)
     logger.error(user)
@@ -66,4 +68,4 @@ def signup(request):
         return render(request, signUpTemplate, {'form': form})
 
     form.save()
-    return redirect('index')
+    return redirect('login:index')

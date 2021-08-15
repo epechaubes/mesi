@@ -1,6 +1,8 @@
 <p> "la mere de : " + {{request.user.username}} + "c'est une pute"
 
+   <div>{{request.user.is_authenticated}}</div>
 
-<a href="board/logout">
+
+<a href="{% url 'logout' %}">
    <button>Logout</button>
 </a>
