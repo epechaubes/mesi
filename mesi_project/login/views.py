@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib import messages
@@ -13,10 +13,26 @@ signUpTemplate = 'login/signup.html'
 loginTemplate = 'login/index.html'
 boardTemplate = 'board/index.html'
 
-def logout(request):
-    logout(request)
-    messages.add_message(request, messages.SUCCESS, "Vous êtes déconnecté !")
-    return redirect("index")
+# def index(request):
+#     if not request.method == 'POST':
+#         return render(request, loginTemplate)
+#
+#     username = request.POST.get('username', False)
+#     password = request.POST.get('password', False)
+#
+#     user = authenticate(request, username=username, password=password)
+#     logger.error(user)
+#
+#     if user is not None:
+#         login(request, user)
+#         return HttpResponseRedirect(reverse("board:index"))
+#     else:
+#         messages.add_message(
+#             request, messages.ERROR, "Les champs renseignés sont invalides."
+#         )
+#         logger.error(messages)
+#         return redirect("index")
+
 
 def index(request):
     if not request.method == 'POST':
@@ -25,23 +41,18 @@ def index(request):
     username = request.POST.get('username', False)
     password = request.POST.get('password', False)
 
-    user = authenticate(request, username=username, password=password)
+    user = authenticate(request, email=email, password=password)
     logger.error(user)
 
     if user is not None:
         login(request, user)
-        testUser = request.user.is_authenticated
-        # return render(request, boardTemplate)
-        # redirect("boardi")
         return HttpResponseRedirect(reverse("board:index"))
     else:
         messages.add_message(
             request, messages.ERROR, "Les champs renseignés sont invalides."
         )
         logger.error(messages)
-        return redirect("index")
-
-
+        return redirect("login:index")
 
 def signup(request):
     if not request.method == 'POST':
