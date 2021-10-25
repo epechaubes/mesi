@@ -1,7 +1,11 @@
 import logging
 
+from django.contrib.auth.models import Group
 from django.forms import ModelForm
 from django.shortcuts import render, redirect
+from django.views import generic
+from django.views.generic import TemplateView
+
 from .models import HeroStory
 
 logger = logging.getLogger(__name__)
@@ -12,6 +16,11 @@ class HeroStoryForm(ModelForm):
     class Meta:
         model = HeroStory
         fields = ('text', )
+
+
+class HeroStoryListView(generic.ListView):
+    model = HeroStory
+    context_object_name = 'herostory_list'
 
 
 def index(request):

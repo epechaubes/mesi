@@ -1,0 +1,9 @@
+    <h1>Articles</h1>
+        <ul>
+            {% for herostory in herostory_list %}
+                <li>{{ herostory.text }}</li>
+            {% empty %}
+                <li>No articles yet.</li>
+            {% endfor %}
+        </ul>
+

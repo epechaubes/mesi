@@ -2,8 +2,12 @@
 
 {% block content %}
 
-    <p> "la mere de : " + {{request.user.username}} + "c'est une pute"
+    <!-- <p> "la mere de : " + {{request.user.username}} + "c'est une pute"
     <div>{{request.user.is_authenticated}}</div>
+
+    -->
+
+    {% include "board/herostory_list.html" %}
 
     <a href="story/">
         <button>new story</button>
