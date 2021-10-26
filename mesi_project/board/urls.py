@@ -9,5 +9,5 @@ app_name = "board"
 urlpatterns = [
     path('story/', views.hero_story, name='story'),
     path('', views.index, name='index'),
-    path('list', HeroStoryListView.as_view(), name='herostory-list')
+    path('list/', HeroStoryListView.as_view(), name='herostory-list')
 ]
