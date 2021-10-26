@@ -21,6 +21,7 @@ class HeroStoryForm(ModelForm):
 class HeroStoryListView(generic.ListView):
     model = HeroStory
     context_object_name = 'herostory_list'
+    paginate_by = 6
 
 
 def index(request):

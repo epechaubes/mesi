@@ -1,8 +1,71 @@
-    <h1>Articles</h1>
-        <ul>
-            {% for herostory in herostory_list %}
-                <li>{{ herostory.text }}</li>
-            {% empty %}
-                <li>No articles yet.</li>
-            {% endfor %}
+<html>
+
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   </head>
+
+    <main>
+        <h1>Articles</h1>
+<!--            <div class="row">-->
+<!--            {% for herostory in herostory_list %}-->
+<!--                <div class="card border-primary mb-3" style="max-width: 18rem;">-->
+<!--                    <div class="card-header">Header</div>-->
+<!--                    <div class="card-body text-primary">-->
+<!--                        <h5 class="card-title">Primary card title</h5>-->
+<!--                        <p>{{ herostory.text }}</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            {% empty %}-->
+<!--                <li>No articles yet.</li>-->
+<!--            {% endfor %}-->
+<!--            </div>-->
+
+        {% for herostory in herostory_list %}
+            {% if forloop.first %}<div class="row" style="width: 100%; text-align: center">{% endif %}
+            <div class="col-xs-4" style="max-width: 30%; padding-left: 2%; padding-top: 5%">
+                <div class="card border-primary mb-3">
+                    <div class="card-header">{{ herostory.author }}</div>
+                    <div class="card-body text-primary">
+                        <p>{{ herostory.date }}</p>
+                        <p>{{ herostory.text }}</p>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 %}</div><div class="row" style="width: 100%; text-align: center">{% endif %}
+            {% if forloop.last %}</div>{% endif %}
+        {% endfor %}
+
+        {% if is_paginated %}
+        <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li>
+                <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+            </li>
+        {% endif %}
+            <li class="">
+                <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+            </li>
+        {% if page_obj.has_next %}
+            <li>
+                <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+            </li>
+        {% endif %}
         </ul>
+        {% else %}
+            <h3>Your File Exam</h3>
+            <p>File not yet available</p>
+        {% endif %}
+    </main>
+
+</html>
+
