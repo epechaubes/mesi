@@ -20,7 +20,7 @@ class HeroStoryForm(ModelForm):
 
 class HeroStoryListView(generic.ListView):
     model = HeroStory
-    context_object_name = 'herostory_list'
+    template_name = 'board/index.html'
     paginate_by = 6
 
 
