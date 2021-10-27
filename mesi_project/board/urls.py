@@ -6,6 +6,6 @@ app_name = "board"
 
 urlpatterns = [
     path('story/', views.hero_story, name='story'),
-    path('test', views.index, name='index'),
+    # path('', views.index, name='index'),
     path('', HeroStoryListView.as_view(), name='herostory-list')
 ]

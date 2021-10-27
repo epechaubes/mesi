@@ -25,7 +25,7 @@ def index(request):
 
     if user is not None:
         login(request, user)
-        return HttpResponseRedirect(reverse("board:index"))
+        return HttpResponseRedirect(reverse("board:herostory-list"))
     else:
         messages.add_message(
             request, messages.ERROR, "Les champs renseignés sont invalides."

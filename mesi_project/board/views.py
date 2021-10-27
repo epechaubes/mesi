@@ -42,5 +42,5 @@ def hero_story(request):
     obj = form.save(commit=False)
     obj.author = request.user
     obj.save()
-    return redirect('board:index')
+    return redirect('board:herostory-list')
 

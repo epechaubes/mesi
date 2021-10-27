@@ -134,6 +134,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    '/mesi_project/board/static/',
-]

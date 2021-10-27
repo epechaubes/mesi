@@ -1,0 +1,27 @@
+.body{
+    background: url("/static/login/images/manga-back.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login{
+    margin: 20px !important;
+}
+
+.idinput{
+    min-width: 450px !important;
+}
+
+p{
+    color: white;
+    text-shadow: 0 0 3px black;
+}
+
+.form{
+    margin-top: -100px;
+}
